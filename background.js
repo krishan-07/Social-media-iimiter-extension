@@ -43,7 +43,7 @@ function handleTab(tab) {
       if (hostname.includes(site)) {
         isSocialMediaSite = true;
         // If the active site changes, stop the timer for the previous site
-        if (activeSite && activeSite !== site) {
+        if (activeSite !== site) {
           stopActiveTimer(activeSite);
           chrome.alarms.clear(`limit-${activeSite}`);
           siteTimers[activeSite] = 0;
