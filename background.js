@@ -89,7 +89,7 @@ function startTimer(site, limit) {
 
 function stopActiveTimer(site) {
   clearInterval(timeIntervals[site]);
-  delete timeIntervals[site];//delete the property
+  delete timeIntervals[site]; //delete the property
 }
 
 //function to create chrome notification
