@@ -53,7 +53,6 @@ function handleTab(tab) {
         }
         activeSite = site;
 
-        //starts the timer from the remaining time
         if (remainingTime[site]) {
           let limit = remainingTime[site];
           startTimer(site, limit);
@@ -65,7 +64,7 @@ function handleTab(tab) {
           const siteLimits = result.siteLimits || {};
           let limit = siteLimits[site] || 30;
           remainingTime[site] = limit;
-      
+          // console.log(limit);s
           if (!siteTimers[site]) {
             siteTimers[site] = 0;
           }
@@ -93,7 +92,7 @@ function startTimer(site, limit) {
   timeIntervals[site] = setInterval(() => {
     siteTimers[site]++;
     remainingTime[site]--;
-
+    console.log(`Time spent on ${site}: ${siteTimers[site]} minutes`);
     if (siteTimers[site] >= limit) {
       chrome.alarms.create(`limit-${site}`, { delayInMinutes: 0 });
       stopActiveTimer(site);
